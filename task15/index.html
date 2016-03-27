@@ -55,7 +55,7 @@
    */
   function sortAqiData(data) {
     return data.sort(function (a, b) {
-      return a - b > 0
+      return a[1] - b[1] > 0
     })
   }
 
@@ -68,8 +68,12 @@
     var fragment = document.createDocumentFragment()
     for (var i = 0; i < data.length; i++) {
       var li = document.createElement('li')
-      var text = document.createTextNode('第' + (i+1) + '名：' + data[i][0] + '空气质量：' + '<b>' + data[i][1] + '</b>')
+      var text = document.createTextNode('第' + (i + 1) + '名：' + data[i][0] + '空气质量：')
+      var b = document.createElement('b')
+      var text2 = document.createTextNode(data[i][1])
+      b.appendChild(text2)
       li.appendChild(text)
+      li.appendChild(b)
       fragment.appendChild(li)
     }
     document.getElementById('resort').appendChild(fragment)
